@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # @Author: libing
 # @Date:   2017-10-23 00:02:11
-# @Last Modified by:   libing
-# @Last Modified time: 2017-10-23 01:08:29
-import time
+# @Last Modified by:   Icrush
+# @Last Modified time: 2017-10-23 01:22:32
+import time,requests
 from flask import Flask,request
 import hashlib
 import xml.etree.ElementTree as ET
