@@ -2,7 +2,7 @@
 # @Author: libing
 # @Date:   2017-10-23 00:02:11
 # @Last Modified by:   libing
-# @Last Modified time: 2017-10-23 00:08:53
+# @Last Modified time: 2017-10-23 00:14:49
 import time
 from flask import Flask, request, make_response
 import hashlib
@@ -35,4 +35,4 @@ def wechat_auth():
         return response
 
 if __name__ == '__main__':
-    app.run(debug=True,port=80)
+    app.run(host='0.0.0.0',debug=True,port=80)
