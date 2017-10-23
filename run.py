@@ -2,11 +2,12 @@
 # @Author: libing
 # @Date:   2017-10-23 00:02:11
 # @Last Modified by:   Icrush
-# @Last Modified time: 2017-10-23 01:24:45
+# @Last Modified time: 2017-10-24 01:35:06
 import time,requests,json
 from flask import Flask,request
 import hashlib
 import xml.etree.ElementTree as ET
+from db import db
 
 app = Flask(__name__)
 
@@ -39,7 +40,11 @@ def wechat_auth():
         Content = talks_robot(xml_recv.find("Content").text)
         reply = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content><FuncFlag>0</FuncFlag></xml>"
         response = reply % (FromUserName, ToUserName,str(int(time.time())), Content)
+        print '==='
+        xx.insert(Content)
         return response
 
 if __name__ == '__main__':
+	xx = db()
+	xx.retrieve_data()
     app.run(host='0.0.0.0',debug=True,port=80)
