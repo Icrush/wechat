@@ -3,14 +3,10 @@ import sys
 import MySQLdb as mdb
 
 class db:
-    DB_HOST = 'localhost'
-    DB_USER = 'root'
-    DB_PASSWORD = 'root'
-    DB_NAME = 'wechat'
 
     def __init__(self):
         try:
-            self.con = mdb.connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)      
+            self.con = mdb.connect('localhost','root','root','wechat')      
             cur = con.cursor()
             cur.execute("SELECT VERSION()")
             data = cur.fetchone()
@@ -31,7 +27,6 @@ class db:
             cur = self.con.cursor()
             sql = "SELECT * FROM wx_user"
             cur.execute(sql)
-
             results = cur.fetchall()
 
             for r in results:
