@@ -7,7 +7,7 @@ class db:
     def __init__(self):
         self.con = None
         try:
-            self.con = mdb.connect('localhost','root','root','wechat')      
+            self.con = mdb.connect('localhost','root','root','wechat',charset='utf8')      
             cur = self.con.cursor()
             cur.execute("SELECT VERSION()")
             data = cur.fetchone()
