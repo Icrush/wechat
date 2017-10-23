@@ -2,7 +2,7 @@
 # @Author: libing
 # @Date:   2017-10-23 00:02:11
 # @Last Modified by:   Icrush
-# @Last Modified time: 2017-10-24 01:47:18
+# @Last Modified time: 2017-10-24 02:27:57
 import time,requests,json
 from flask import Flask,request
 import hashlib
@@ -22,17 +22,8 @@ def talks_robot(info = '你叫什么名字'):
 @app.route('/', methods=['GET', 'POST'])
 def wechat_auth():
     if request.method == 'GET':
-        token = 'icrush'  
-        query = request.args
-        signature = query.get('signature', '')
-        timestamp = query.get('timestamp', '')
-        nonce = query.get('nonce', '')
-        echostr = query.get('echostr', '')
-        s = [timestamp, nonce, token]
-        s.sort()
-        s = ''.join(s)
-        if (hashlib.sha1(s).hexdigest() == signature):
-            return echostr
+        print 'get'
+        return echostr
     else:
         xml_recv = ET.fromstring(request.data)
         ToUserName = xml_recv.find("ToUserName").text
@@ -41,7 +32,7 @@ def wechat_auth():
         reply = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content><FuncFlag>0</FuncFlag></xml>"
         response = reply % (FromUserName, ToUserName,str(int(time.time())), Content)
         print '==='
-        xx.insert(Content)
+        xx.insert(Content.encode('utf-8'))
         return response
 
 if __name__ == '__main__':
