@@ -2,7 +2,7 @@
 # @Author: libing
 # @Date:   2017-10-23 00:02:11
 # @Last Modified by:   Icrush
-# @Last Modified time: 2017-10-24 01:35:06
+# @Last Modified time: 2017-10-24 01:47:18
 import time,requests,json
 from flask import Flask,request
 import hashlib
@@ -45,6 +45,6 @@ def wechat_auth():
         return response
 
 if __name__ == '__main__':
-	xx = db()
-	xx.retrieve_data()
+    xx = db()
+    xx.retrieve_data()
     app.run(host='0.0.0.0',debug=True,port=80)
