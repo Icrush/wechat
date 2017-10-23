@@ -5,6 +5,7 @@ import MySQLdb as mdb
 class db:
 
     def __init__(self):
+        self.con = None
         try:
             self.con = mdb.connect('localhost','root','root','wechat')      
             cur = self.con.cursor()
@@ -14,9 +15,6 @@ class db:
         except mdb.Error as e:
             print "Error:" + str(e)
             sys.exit(1)        
-        finally:
-            if self.con:
-                self.con.close()
 
 
     def retrieve_data(self):
