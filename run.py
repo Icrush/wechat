@@ -22,7 +22,7 @@ def talks_robot(info = '你叫什么名字'):
 @app.route('/', methods=['GET', 'POST'])
 def wechat_auth():
     if request.method == 'GET':
-        print 'get'
+        echostr=request.values.get('echostr')
         return echostr
     else:
         xml_recv = ET.fromstring(request.data)
